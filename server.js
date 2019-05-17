@@ -1,14 +1,17 @@
-const express = require('express');
-const Router = require('./router.js')
+const express = require("express");
+const helmet = require("helmet");
+
+const Router = require("./router.js");
 
 const server = express();
 
 server.use(express.json());
-server.use('/api/posts', Router);
+server.use("/api/posts", Router);
+server.use(helmet());
 
-server.get('/', (req, res) => {
+server.get("/", (req, res) => {
   res.send(`
-    <h2>Lambda</h> 
+    <h2>Lambda</h>
     <p>Welcome to the Lambda</p>
   `);
 });
